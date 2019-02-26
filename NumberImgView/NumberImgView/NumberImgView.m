@@ -70,7 +70,7 @@ static const CGFloat MaximumLength = 3;
     [self.rootView mas_makeConstraints:^(MASConstraintMaker *make) {
     
         make.centerY.mas_equalTo(self);
-        make.size.mas_equalTo(CGSizeMake([self getImageSize].width * MaximumLength, [self getImageSize].height));
+        make.size.mas_equalTo(CGSizeMake([self getImageSize].width * self.numberString.length, [self getImageSize].height));
         if (self.numberAlignment == NumberAlignmentLeft) {
             make.left.mas_equalTo(self);
         } else if (self.numberAlignment == NumberAlignmentRight){
@@ -97,6 +97,9 @@ static const CGFloat MaximumLength = 3;
 #pragma mark - setter
 
 - (void)setNumberString:(NSString *)numberString {
+    if (![numberString isKindOfClass:[NSString class]]) {
+        return;
+    }
     _numberString = numberString;
     
     [self _updateRootViewConstraints];

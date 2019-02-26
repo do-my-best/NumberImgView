@@ -6,6 +6,13 @@
 //  Copyright © 2019 liuzhu. All rights reserved.
 //
 
+
+/**
+ todo:
+    1. 传入字典将图片和对应的数字或小数点等符号数据匹配起来
+    2. 增加间距
+ */
+
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, NumberAlignment) {
