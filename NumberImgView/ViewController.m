@@ -26,7 +26,6 @@
 }
 
 
-
 - (void)setupControl{
     [self _initializeViews];
     [self _makeConstraints];
@@ -76,6 +75,36 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     NSInteger num = arc4random()%10000;
     self.numberImgView.numberString =[NSString stringWithFormat:@"%li",num];
+    [self addComboAnimation];
+}
+
+- (void)addComboAnimation
+{
+    if (CGAffineTransformIsIdentity(self.numberImgView.transform) ) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self animateGiftNumImg];
+        });
+    } else {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self animateGiftNumImg];
+        });
+    }
+}
+
+
+/**
+ 礼物数字图片先放大然后回归正常
+ */
+- (void)animateGiftNumImg {
+    UIView *comboView = self.numberImgView.rootView;
+    comboView.transform = CGAffineTransformIdentity;
+    [UIView animateWithDuration:0.1 animations:^{
+        comboView.transform = CGAffineTransformMakeScale(5, 5);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            comboView.transform = CGAffineTransformIdentity;
+        }];
+    }];
 }
 
 @end

@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 需要传入的参数: 1. 照片的路径名称  2. 照片的高度
 @interface NumberImgView : UIView
 
+@property (nonatomic,strong) UIView *rootView;
 @property (nonatomic, assign) NumberAlignment numberAlignment;
 @property (nonatomic, copy) NSString *numberString;
 

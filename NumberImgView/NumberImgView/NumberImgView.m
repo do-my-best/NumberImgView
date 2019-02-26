@@ -15,8 +15,6 @@ static const CGFloat MaximumLength = 3;
 
 @interface NumberImgView ()
 
-@property (nonatomic,strong) UIView *rootView;
-
 /**
  数字视图数组
  */
